@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "product": "zhai-sealos-web",
+  "version": "0.27.1",
+  "python": "3.12",
+  "architectures": [
+    "aarch64",
+    "x86_64"
+  ],
+  "codexCli": false,
+  "ocr": false,
+  "customPython": false
+}

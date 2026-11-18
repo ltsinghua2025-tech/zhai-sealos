@@ -1,0 +1,9 @@
+/.env
+/.env.*
+**/private-config.json
+/zhai/.venv/
+/zhai/data/
+/zhai/.run/
+**/__pycache__/
+*.sqlite*
+*.log
