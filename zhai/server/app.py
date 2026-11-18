@@ -1142,7 +1142,8 @@ class Handler(BaseHTTPRequestHandler):
             return False
         if self.command == "GET" and urlparse(self.path).path == "/api/health":
             return True
-        expected = f"{os.environ.get('ZHAI_ACCESS_USER', 'zhai')}:{os.environ.get('ZHAI_ACCESS_PASSWORD', '')}"
+        password = os.environ.get("ZHAI_ACCESS_PASSWORD")
+        expected = f"{os.environ.get('ZHAI_ACCESS_USER', 'zhai')}:{password}"
         actual = ""
         try:
             scheme, value = self.headers.get("Authorization", "").split(" ", 1)
@@ -1150,7 +1151,7 @@ class Handler(BaseHTTPRequestHandler):
                 actual = base64.b64decode(value, validate=True).decode("utf-8")
         except (ValueError, UnicodeError):
             pass
-        if not os.environ.get("ZHAI_ACCESS_PASSWORD") or not hmac.compare_digest(actual.encode(), expected.encode()):
+        if password and not hmac.compare_digest(actual.encode(), expected.encode()):
             self.close_connection = True
             self.send_response(401)
             self.send_header("WWW-Authenticate", 'Basic realm="zhai", charset="UTF-8"')
@@ -1523,8 +1524,8 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main() -> int:
-    if not os.environ.get("ZHAI_ACCESS_PASSWORD"):
-        raise SystemExit("未配置访问密码，请使用部署包的启动脚本")
+    if os.environ.get("ZHAI_LLM_API_KEY") and not os.environ.get("ZHAI_ACCESS_PASSWORD"):
+        raise SystemExit("免登录实例请在网页的模型服务中填写自己的 API Key。")
     # One writer per workspace, including when two Devbox terminals start it.
     with data_lock(DATA_DIR):
         init_db()

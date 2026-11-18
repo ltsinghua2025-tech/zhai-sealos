@@ -21,7 +21,7 @@
   "engine/word_structure.py": "d95fe41d9bd2a4c11f46f0041ce5f803141e783849b9ce7a4001dc75507b9bf4",
   "release.json": "e608528432f7faabad2c543dac5680fd32321821730e1d22b44248ef0fa19eb3",
   "resources/builtin-output-contracts.json": "cded4309aa554c9dc8af687f1b5b6865843acc63680f16d1b3b549aabb821360",
-  "server/app.py": "3769e32ffd20f1eef69b2a22eddd4ac8b9585ee3d44abdc13e9e0b6300e92136",
+  "server/app.py": "654ec16645f25c33b98084d7b77acc5d249a2e64bb281258039ae25ea2ed70bf",
   "server/data_admin.py": "8d9c7cdc454576b73e23ada88ee70c32b16248c31e79f2a450479a198d45c151",
   "server/runtime_config.py": "c4b7b661c7acdddd75e33b6e549f1460f148a0e95e1917e228c054a3eb6b6d03",
   "verify-package.py": "ef76275c7cb51b812dc2e55073951cfcb06c54c42177f57240d602659558b751",
